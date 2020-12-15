@@ -13,13 +13,15 @@ matrix:
     #  env: CXX=g++-8 CC=gcc-8
     - os: osx
       osx_image: xcode12.2
+      language: cpp
+      compiler: clang
       addons:
         homebrew:
           packages:
-          - cmake
-          - ninja
-      language: cpp
-      compiler: clang
+            - ninja
+      cache:
+        directories:
+          - $HOME/Library/Caches/Homebrew
     #- os: windows
     #  language: bash
     #  env: CXX=cl.exe
