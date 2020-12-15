@@ -13,6 +13,12 @@ matrix:
       env: CXX=g++-8 CC=gcc-8
     - os: osx
       osx_image: xcode12.2
+      addons:
+        homebrew:
+          packages:
+          - llvm
+          - cmake
+          - ninja
       language: cpp
       compiler: clang
     - os: windows
@@ -23,8 +29,7 @@ install:
     if [[ $TRAVIS_OS_NAME == 'windows' ]]; then
       choco install ninja cmake
     elif [[ $TRAVIS_OS_NAME == 'osx' ]]; then
-      export PATH=~/Library/Python/3.7/bin:$PATH
-      pip3 install --user ninja cmake
+      echo 'NOOP'
     else
       pipenv global 3.6
       pip install --user ninja cmake
