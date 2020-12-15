@@ -1,36 +1,33 @@
 matrix:
   include:
-    - os: linux
-      dist: bionic
-      language: cpp
-      compiler: gcc
-      addons:
-        apt:
-          sources:
-            - ubuntu-toolchain-r-test
-          packages:
-            - g++-8
-      env: CXX=g++-8 CC=gcc-8
+    #- os: linux
+    #  dist: bionic
+    #  language: cpp
+    #  compiler: gcc
+    #  addons:
+    #    apt:
+    #      sources:
+    #        - ubuntu-toolchain-r-test
+    #      packages:
+    #        - g++-8
+    #  env: CXX=g++-8 CC=gcc-8
     - os: osx
       osx_image: xcode12.2
       addons:
         homebrew:
           packages:
-          - llvm
           - cmake
           - ninja
       language: cpp
       compiler: clang
-    - os: windows
-      language: bash
-      env: CXX=cl.exe
+    #- os: windows
+    #  language: bash
+    #  env: CXX=cl.exe
 install:
   - |
     if [[ $TRAVIS_OS_NAME == 'windows' ]]; then
       choco install ninja cmake
-    elif [[ $TRAVIS_OS_NAME == 'osx' ]]; then
-      echo 'NOOP'
-    else
+    elif [[ $TRAVIS_OS_NAME == 'linux' ]]; then
       pipenv global 3.6
       pip install --user ninja cmake
     fi
