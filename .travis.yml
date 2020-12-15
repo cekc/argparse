@@ -22,6 +22,9 @@ matrix:
       cache:
         directories:
           - $HOME/Library/Caches/Homebrew
+
+      before_cache:
+        - brew cleanup
     #- os: windows
     #  language: bash
     #  env: CXX=cl.exe
